@@ -1,18 +1,19 @@
 #include "main.h"
+//setup everything
 pros::ADIButton limitswitch (1);
 pros::ADIButton limitswitch2 (8);
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-pros::Motor LFM(1, true);
-pros::Motor RFM(2);
-pros::Motor LBM(3, true);
-pros::Motor RBM(4);
-pros::Motor LLFT(6, true);
-pros::Motor RLFT(5);
-pros::Motor UCLW(7, true);
-pros::Motor DCLW(8);
+pros::Motor LFM(1, true); //left front
+pros::Motor RFM(2); //right front
+pros::Motor LBM(3, true); //left back
+pros::Motor RBM(4); //right back
+pros::Motor LLFT(6, true); //left lift
+pros::Motor RLFT(5); //right lift
+pros::Motor UCLW(7, true); //upper claw
+pros::Motor DCLW(8); //down claw
 
-pros::Motor CBLINE(9);
-
+pros::Motor CBLINE(9); //cubeline
+//set up sensor
 bool name = false;
 void LimitSwitch(void*){
 while (true) {
@@ -85,6 +86,7 @@ void competition_initialize() {
  * from where it left off.
  */
 void autonomous() {
+//auton no loop
 /*4 point red autonomous
   LBM.move_absolute(-1000, 100);
   RBM.move_absolute(-1000, 100);
@@ -223,6 +225,7 @@ pros::Task task1(LimitSwitch, nullptr, "blah");
 
 
 void opcontrol() {
+//controls 
 RLFT.set_zero_position(0);
 LLFT.set_zero_position(0);
 pros::Task task1(LimitSwitch, nullptr, "blah");
